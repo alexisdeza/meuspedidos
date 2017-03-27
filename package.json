@@ -1,0 +1,17 @@
+{
+  "name": "meuspedidos",
+  "version": "1.0.0",
+  "description": "Teste vaga",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nouislider": "^9.2.0"
+  },
+  "devDependencies": {
+    "jquery": "^3.2.1"
+  }
+}

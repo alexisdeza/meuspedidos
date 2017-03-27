@@ -1,0 +1,50 @@
+{% extends "avaliacao/base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'nouislider/nouislider.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Formulário</h1>
+            Preencha o seu nível de conhecimento das seguintes ferramentas:
+            {% crispy form %}
+        </div>
+    </div>
+{% endblock %}
+{% block extra_javascript %}
+    <script src="{% static 'nouislider/nouislider.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            var stepSlider = document.getElementById('pow');
+
+            noUiSlider.create(stepSlider, {
+                start: [1],
+                step: 1,
+                connect: true,
+                range: {
+                    'min': [0],
+                    'max': [10]
+                }
+            });
+
+
+            var inputNumber = document.getElementById('id_css');
+
+            stepSlider.noUiSlider.on('update', function (value) {
+                if (value) {
+                    inputNumber.value = value;
+                }
+            });
+
+            inputNumber.addEventListener('change', function () {
+                console.log(this.value);
+                stepSlider.noUiSlider.set(this.value);
+            });
+        });
+    </script>
+{% endblock %}
